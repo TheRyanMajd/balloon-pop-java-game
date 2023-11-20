@@ -29,8 +29,6 @@ This JavaFX project is a simple Balloon Pop game where players can pop balloons 
    ```bash
    git clone https://github.com/TheRyanMajd/balloon-pop-java-game.git
 
-   ## Getting Started
-
 1. Open the project in your favorite Java IDE.
 2. Run the `Main.java` file to launch the game.
 
