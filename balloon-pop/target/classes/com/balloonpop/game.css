@@ -1,0 +1,27 @@
+.root {
+    -fx-background-color: #B9E3C6;
+    -fx-alignment: center;
+
+}
+
+.label {
+    -fx-font-family: "Comic Sans MS";
+}
+.button-cartoony {
+    -fx-background-color: #FFD700; /* Gold color */
+    -fx-text-fill: #ffffff; /* White text color */
+    -fx-font-family: "Comic Sans MS"; /* Fun and cartoony font */
+    -fx-font-size: 14px;
+    -fx-padding: 10 20, 20, 20;
+    -fx-alignment: center;
+    -fx-background-radius: 20; /* Rounded corners */
+    -fx-border-radius: 20;
+    -fx-border-color: #FFA500; /* Orange border color */
+    -fx-border-width: 2;
+    -fx-cursor: hand; /* Change cursor on hover */
+}
+
+.button-cartoony:hover {
+    -fx-background-color: #FFA500; /* Darker gold color on hover */
+    -fx-border-color: #FF4500; /* Darker orange border color on hover */
+}
