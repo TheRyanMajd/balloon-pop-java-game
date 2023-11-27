@@ -96,6 +96,7 @@ public class App extends Application {
         clearButton.getStyleClass().add("button-cartoony");
         clearButton.setFont(new Font(10));
         Button balloonButton = new Button();
+        Button blueBalloonButton = new Button();
         Image bln = new Image(
                 "file:/Users/ryanmajd/Projects/balloon pop java game/balloon-pop/src/main/resources/balloon.png");
         ImageView blnView = new ImageView(bln);
@@ -105,11 +106,21 @@ public class App extends Application {
         balloonButton.setMaxSize(blnView.getFitWidth() / 4, blnView.getFitHeight() / 4);
 
         balloonButton.getStyleClass().add("button-cartoony");
+        Image blueBlnBtn = new Image(
+                "file:/Users/ryanmajd/Projects/balloon pop java game/balloon-pop/src/main/resources/blueBalloon.png");
+        ImageView blueBlnView = new ImageView(blueBlnBtn);
+        blueBlnView.setFitWidth(30);
+        blueBlnView.setFitHeight(60);
+        blueBalloonButton.setGraphic(blueBlnView);
+        // blueBalloonButton.setMaxSize(blueBlnView.getFitWidth() / 4,
+        // blueBlnView.getFitHeight() / 4);
+        blueBalloonButton.getStyleClass().add("button-cartoony");
         // Display player score information
         Pane infoPane = new Pane();
         infoPane.setPadding(new Insets(20, 10, 10, 5));
         HBox commands = new HBox(settingButton, clearButton); // will fix formatting for this later
-        ribbonItems.getChildren().addAll(backButton, settingButton, clearButton, balloonButton, gameScore);
+        ribbonItems.getChildren().addAll(backButton, settingButton, clearButton, balloonButton, blueBalloonButton,
+                gameScore);
         // ^^ Clean up with an HBox for commands
         ribbonItems.setSpacing(10);
 
@@ -140,6 +151,14 @@ public class App extends Application {
 
         balloonButton.setOnAction(e -> {
             Balloon tempBalloon = new Balloon();
+            playgroundBoard.getChildren().add(tempBalloon.imageView);
+            addEnemyToList(tempBalloon);
+            Platform.runLater(() -> {
+                tempBalloon.pT.play();
+            });
+        });
+        blueBalloonButton.setOnAction(e -> {
+            BlueBalloon tempBalloon = new BlueBalloon();
             playgroundBoard.getChildren().add(tempBalloon.imageView);
             addEnemyToList(tempBalloon);
             Platform.runLater(() -> {

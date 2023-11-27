@@ -14,9 +14,9 @@ import javafx.scene.shape.LineTo;
 public class Balloon extends App {
     protected ImageView imageView;
     protected PathTransition pT;
-    private Circle circle;
-    private boolean killed = false;
-    private double randomPathDur; // Moved randomPathDur to a class field
+    protected Circle circle;
+    public boolean killed = false;
+    protected double randomPathDur; // Moved randomPathDur to a class field
 
     public Balloon() {
         this.circle = new Circle(20);
@@ -50,7 +50,10 @@ public class Balloon extends App {
         this.pT.play();
     }
 
-    private void randTransitions() {
+    /**
+     * 
+     */
+    protected void randTransitions() {
         Random random = new Random();
         int randomInt = random.nextInt(100, App.ScreenWidth - 150); // Generate a random X-coordinate
         circle.setLayoutX(randomInt);
@@ -59,7 +62,10 @@ public class Balloon extends App {
         this.pT.setPath(path);
     }
 
-    private void balloonPopped() {
+    /**
+     * Should be called when mouse is clicked on ImageView.
+     */
+    protected void balloonPopped() {
         if (!killed) {
             playPop();
             changeLocation();
@@ -69,7 +75,11 @@ public class Balloon extends App {
         }
     }
 
-    private void changeLocation() {
+    /**
+     * When called, the balloon will randomize the path transition and start from
+     * the beginning.
+     */
+    protected void changeLocation() {
         if (!killed) {
             randTransitions();
             pT.playFromStart();
