@@ -4,6 +4,7 @@ package com.balloonpop;
 import java.io.File;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
+import javafx.scene.paint.Color;
 import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.geometry.Insets;
@@ -30,18 +31,18 @@ public class App extends Application {
     private VBox root;
     public static Pane gameScreen = new Pane();
     public static Label gameScore;
-    private Label title, splashText, scoreInformation, infoTab;
+    private Label title, splashText, scoreInformation, infoTab, playScoreLabel;
     private String phrases[] = { "Hello, world!", "Under Construction", "Internships r Cool!",
             "Programming is fun.",
             "What the dog doin?!", "Can you even remember why you came here?",
-            "Value your time!"
+            "Value your time!", "Made using: Procrastination", "Hope this won't crash!", "🚫🚿"
     };
     public static int ScreenWidth = 900;
     public static int ScreenLength = 720;
     protected static Player p1 = new Player("Hero");
     Button playButton, playgroundButton, musicButton, getPlayerNameFromField; // title buttons
     TextField playerNameField;
-    Button backButton, settingButton, clearButton; // game buttons
+    Button backButton, bkBtn, infoButton, clearButton; // game buttons
     Pane playgroundBoard;
     ArrayList<Balloon> currentBalloons = new ArrayList<>();
 
@@ -83,9 +84,12 @@ public class App extends Application {
         backButton = new Button("Back");
         backButton.getStyleClass().add("button-cartoony");
         backButton.setStyle("-fx-font-size: 10;");
-        settingButton = new Button();
-        settingButton.setGraphic(funBtn);
-        settingButton.getStyleClass().add("button-cartoony");
+        bkBtn = new Button("Quit");
+        bkBtn.getStyleClass().add("button-cartoony");
+        bkBtn.setStyle("-fx-font-size: 10;");
+        infoButton = new Button();
+        infoButton.setGraphic(funBtn);
+        infoButton.getStyleClass().add("button-cartoony");
         Image clsImg = new Image(
                 "file:/Users/ryanmajd/Projects/balloon pop java game/balloon-pop/src/main/resources/cls.jpg");
         ImageView clsView = new ImageView(clsImg);
@@ -118,30 +122,43 @@ public class App extends Application {
         // Display player score information
         Pane infoPane = new Pane();
         infoPane.setPadding(new Insets(20, 10, 10, 5));
-        HBox commands = new HBox(settingButton, clearButton); // will fix formatting for this later
-        ribbonItems.getChildren().addAll(backButton, settingButton, clearButton, balloonButton, blueBalloonButton,
+        ribbonItems.getChildren().addAll(backButton, infoButton, clearButton, balloonButton, blueBalloonButton,
                 gameScore);
-        // ^^ Clean up with an HBox for commands
         ribbonItems.setSpacing(10);
-
         // Set up background image
         Image bgImage = new Image(
                 "file:/Users/ryanmajd/Projects/balloon pop java game/balloon-pop/src/main/resources/playgroundbg.jpg");
         ImageView img = new ImageView(bgImage);
+        ImageView pimg = new ImageView(
+                new Image(
+                        "file:/Users/ryanmajd/Projects/balloon pop java game/balloon-pop/src/main/resources/bgsm.png"));
         img.setX(10);
         img.setY(0);
         img.resize(1280, 720);
         this.playgroundBoard = new Pane(img);
         ribbon.getChildren().addAll(ribbonItems, playgroundBoard);
-
+        Pane playBoard = new Pane(pimg);
+        this.playScoreLabel = new Label();
+        playScoreLabel.getStyleClass().add("label-subtitle");
+        playScoreLabel.setText(" " + p1.name + "Score: " + p1.score);
+        Label timer = new Label();
+        timer.getStyleClass().add("label-subtitle");
+        int time = 30;
+        timer.setText(time + "s");
+        timer.setPadding(new Insets(0, 10, 0, 10));
+        playBoard.getChildren().addAll(playScoreLabel, timer);
+        VBox playRibbon = new VBox();
+        bkBtn.setMinWidth(70);
+        playRibbon.getChildren().addAll(bkBtn, infoButton);
+        playRibbon.setSpacing(10);
+        playRibbon.setPadding(new Insets(10, 10, 20, 0));
+        HBox playArea = new HBox(playRibbon, playBoard);
+        // playArea.setSpacing(20);
         // CreateplaygorundMOde scene
         Scene playgroundMode = new Scene(ribbon, ScreenWidth, ScreenLength);
         playgroundMode.getStylesheets().add(css);
-
-        // // Add balloons to the scene
-        // Balloon b1 = new Balloon();
-        // playgroundBoard.getChildren().addAll(b1.imageView);
-        // b1.pT.play();
+        Scene playMode = new Scene(playArea, ScreenWidth, ScreenLength);
+        playMode.getStylesheets().add(css);
 
         /* Buttons! */
 
@@ -177,7 +194,7 @@ public class App extends Application {
             mediaPlayer.seek(Duration.ZERO); // Seek to the beginning when media ends
         });
 
-        settingButton.setOnAction(e -> {
+        infoButton.setOnAction(e -> {
             System.out.println("Use for testing/debugging/developmenet 🫡");
             p1.addScore(100);
         });
@@ -187,11 +204,16 @@ public class App extends Application {
             primaryStage.show();
         });
         playButton.setOnAction(e -> {
-            System.err.println("Normal mode not created yet");
+            primaryStage.setScene(playMode);
+            primaryStage.show();
         });
         backButton.setOnAction(e -> {
             backToMainMenu(primaryStage, menu);
         });
+        bkBtn.setOnAction(e -> {
+            backToMainMenu(primaryStage, menu);
+        });
+
         musicButton.setOnAction(e -> {
             if (mediaPlayer.statusProperty().get() == MediaPlayer.Status.PAUSED) {
                 musicButton.setText("Music!");
@@ -240,19 +262,19 @@ public class App extends Application {
         ribbon.setStyle("-fx-alignment: LEFT");
         VBox ribbonItems = new VBox(ribbon);
         backButton = new Button("Back");
-        settingButton = new Button("Settings");
+        infoButton = new Button("Settings");
         Text t = new Text(p1.toString());
         t.setFont(Font.font("Verdana", FontWeight.BOLD, 24));
         Pane infoPane = new Pane(t);
         infoPane.setPadding(new Insets(10, 10, 20, 0));
-        ribbonItems.getChildren().addAll(backButton, settingButton, infoPane);
+        ribbonItems.getChildren().addAll(backButton, infoButton, infoPane);
         ribbonItems.setPadding(new Insets(10, 10, 20, 0));
         // Title and logo
         title = new Label("Balloon Pop!");
         title.setFont(new Font(64));
         splashText = new Label(randomPhrase());
-        // splashText.setFont(new Font("Lato", 24));
-        // splashText.setTextFill(Color.GOLD);
+        splashText.setFont(new Font(24));
+        splashText.setTextFill(Color.VIOLET);
         Pane logo = new Pane();
         logo.setPadding(new Insets(0, 0, 10, 0));
         logo.getChildren().addAll(title);
@@ -272,7 +294,6 @@ public class App extends Application {
         // Buttons setup
         playButton = new Button("Play!");
         playButton.getStyleClass().add("button-cartoony");
-        playButton.setDisable(true);
         playgroundButton = new Button("Playground Mode");
         playgroundButton.getStyleClass().add("button-cartoony");
         musicButton = new Button("Music!");

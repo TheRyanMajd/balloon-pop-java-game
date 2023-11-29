@@ -21,6 +21,11 @@
     -fx-cursor: hand; /* Change cursor on hover */
 }
 
+.label-subtitle {
+    -fx-font-family: "Comic Sans MS";
+    -fx-font-size: 26px;
+}
+
 .button-cartoony:hover {
     -fx-background-color: #FFA500; /* Darker gold color on hover */
     -fx-border-color: #FF4500; /* Darker orange border color on hover */
