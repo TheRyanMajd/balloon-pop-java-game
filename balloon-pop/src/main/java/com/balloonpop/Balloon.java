@@ -6,6 +6,8 @@ import javafx.animation.*;
 import javafx.scene.layout.Pane;
 import javafx.scene.shape.Circle;
 import javafx.util.Duration;
+
+import java.io.InputStream;
 import java.util.Random;
 import javafx.scene.shape.Path;
 import javafx.scene.shape.MoveTo;
@@ -20,9 +22,8 @@ public class Balloon extends App {
 
     public Balloon() {
         this.circle = new Circle(20);
-        Image bln = new Image(
-                "file:/Users/ryanmajd/Projects/balloon pop java game/balloon-pop/src/main/resources/balloon.png");
-        this.imageView = new ImageView(bln);
+        InputStream inputStream = App.class.getResourceAsStream("/balloon.png");
+        this.imageView = new ImageView(new Image(inputStream));
         imageView.setOnMouseClicked(event -> balloonPopped());
         Pane gameScreen = App.gameScreen;
         // Set the initial position of the circle (you can adjust this as needed)

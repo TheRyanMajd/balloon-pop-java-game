@@ -1,5 +1,6 @@
 package com.balloonpop;
 
+import java.io.InputStream;
 import java.util.Random;
 
 import javafx.animation.PathTransition;
@@ -17,10 +18,8 @@ public class BlueBalloon extends Balloon {
 
     public BlueBalloon() {
         this.circle = new Circle(20);
-        Image bln = new Image(
-                "file:/Users/ryanmajd/Projects/balloon pop java game/balloon-pop/src/main/resources/blueBalloon.png");
-
-        this.imageView = new ImageView(bln);
+        InputStream inputStream = App.class.getResourceAsStream("/blueBalloon.png");
+        this.imageView = new ImageView(new Image(inputStream));
         imageView.setOnMouseClicked(event -> balloonPopped());
         Pane gameScreen = App.gameScreen;
         // Set the initial position of the circle (you can adjust this as needed)

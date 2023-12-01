@@ -2,6 +2,8 @@ package com.balloonpop;
 
 /* imports */
 import java.io.File;
+import java.io.InputStream;
+
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.scene.paint.Color;
@@ -25,6 +27,8 @@ import javafx.scene.text.Text;
 import java.util.ArrayList;
 import java.util.Random;
 import javafx.util.Duration;
+
+// TODO: Rm ROOT Directory so others can download and run it
 
 public class App extends Application {
     /* Class Variables */
@@ -75,9 +79,15 @@ public class App extends Application {
         HBox ribbon = new HBox();
         ribbon.alignmentProperty();
         VBox ribbonItems = new VBox();
-        Image funBtnImg = new Image(
-                "file:/Users/ryanmajd/Projects/balloon pop java game/balloon-pop/src/main/resources/funBtn.jpg");
+        // Assuming YourGameClass is in the com.yourpackage package
+        InputStream inputStream = App.class.getResourceAsStream("/funBtn.jpg");
+        Image funBtnImg = new Image(inputStream);
         ImageView funBtn = new ImageView(funBtnImg);
+
+        // Image funBtnImg = new Image(
+        // "file:/Users/ryanmajd/Projects/balloon pop java
+        // game/balloon-pop/src/main/resources/funBtn.jpg");
+        // ImageView funBtn = new ImageView(funBtnImg);
         gameScore = new Label("Score\n" + 0); // Score starts at 0
         gameScore.setFont(new Font("Comic Sans MS", 24));
         // Set up buttons with images
@@ -90,9 +100,9 @@ public class App extends Application {
         infoButton = new Button();
         infoButton.setGraphic(funBtn);
         infoButton.getStyleClass().add("button-cartoony");
-        Image clsImg = new Image(
-                "file:/Users/ryanmajd/Projects/balloon pop java game/balloon-pop/src/main/resources/cls.jpg");
-        ImageView clsView = new ImageView(clsImg);
+        InputStream isFB = App.class.getResourceAsStream("/cls.jpg");
+        Image clsBtn = new Image(isFB);
+        ImageView clsView = new ImageView(clsBtn);
         clearButton = new Button();
         clsView.setFitWidth(30);
         clsView.setFitHeight(30);
@@ -101,8 +111,8 @@ public class App extends Application {
         clearButton.setFont(new Font(10));
         Button balloonButton = new Button();
         Button blueBalloonButton = new Button();
-        Image bln = new Image(
-                "file:/Users/ryanmajd/Projects/balloon pop java game/balloon-pop/src/main/resources/balloon.png");
+        InputStream isB = App.class.getResourceAsStream("/Balloon.png");
+        Image bln = new Image(isB);
         ImageView blnView = new ImageView(bln);
         blnView.setFitWidth(30);
         blnView.setFitHeight(60);
@@ -110,8 +120,8 @@ public class App extends Application {
         balloonButton.setMaxSize(blnView.getFitWidth() / 4, blnView.getFitHeight() / 4);
 
         balloonButton.getStyleClass().add("button-cartoony");
-        Image blueBlnBtn = new Image(
-                "file:/Users/ryanmajd/Projects/balloon pop java game/balloon-pop/src/main/resources/blueBalloon.png");
+        InputStream isBB = App.class.getResourceAsStream("/blueBalloon.png");
+        Image blueBlnBtn = new Image(isBB);
         ImageView blueBlnView = new ImageView(blueBlnBtn);
         blueBlnView.setFitWidth(30);
         blueBlnView.setFitHeight(60);
@@ -126,12 +136,10 @@ public class App extends Application {
                 gameScore);
         ribbonItems.setSpacing(10);
         // Set up background image
-        Image bgImage = new Image(
-                "file:/Users/ryanmajd/Projects/balloon pop java game/balloon-pop/src/main/resources/playgroundbg.jpg");
-        ImageView img = new ImageView(bgImage);
-        ImageView pimg = new ImageView(
-                new Image(
-                        "file:/Users/ryanmajd/Projects/balloon pop java game/balloon-pop/src/main/resources/bgsm.png"));
+        InputStream pgBG = App.class.getResourceAsStream("/playgroundbg.jpg");
+        ImageView img = new ImageView(new Image(pgBG));
+        InputStream bgSM = App.class.getResourceAsStream("/bgsm.png");
+        ImageView pimg = new ImageView(new Image(bgSM));
         img.setX(10);
         img.setY(0);
         img.resize(1280, 720);
