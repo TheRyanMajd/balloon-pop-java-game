@@ -13,6 +13,9 @@ import javafx.scene.shape.Path;
 import javafx.scene.shape.MoveTo;
 import javafx.scene.shape.LineTo;
 
+/**
+ * Represents a balloon in the game.
+ */
 public class Balloon extends App {
     protected ImageView imageView;
     protected PathTransition pT;
@@ -41,6 +44,12 @@ public class Balloon extends App {
         randTransitions();
     }
 
+    /**
+     * Marks the balloon as killed and stops the animation.
+     * Sets the opacity of the balloon's image view to 0 and jumps to the beginning
+     * of the animation.
+     * Pauses the animation at the beginning and then plays it.
+     */
     public void delete() {
         this.killed = true;
         this.pT.setCycleCount(1);
@@ -54,6 +63,11 @@ public class Balloon extends App {
     /**
      * 
      */
+    /**
+     * Generates a random X-coordinate for the balloon and sets its layout
+     * accordingly.
+     * Defines the path of the balloon for the up and down animation.
+     */
     protected void randTransitions() {
         Random random = new Random();
         int randomInt = random.nextInt(100, App.ScreenWidth - 150); // Generate a random X-coordinate
@@ -64,7 +78,10 @@ public class Balloon extends App {
     }
 
     /**
-     * Should be called when mouse is clicked on ImageView.
+     * This method is called when a balloon is popped.
+     * If the balloon is not already popped, it plays a pop sound, changes the
+     * balloon's location, and adds 1 to the player's score.
+     * If the balloon is already popped, it deletes the balloon.
      */
     protected void balloonPopped() {
         if (!killed) {
@@ -74,7 +91,7 @@ public class Balloon extends App {
         } else {
             delete();
         }
-    }
+    } // balloonPopped
 
     /**
      * When called, the balloon will randomize the path transition and start from
@@ -85,5 +102,5 @@ public class Balloon extends App {
             randTransitions();
             pT.playFromStart();
         }
-    }
-}
+    } // chngLoc
+} // Balloon.java

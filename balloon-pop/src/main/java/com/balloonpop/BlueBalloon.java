@@ -14,6 +14,11 @@ import javafx.scene.shape.MoveTo;
 import javafx.scene.shape.Path;
 import javafx.util.Duration;
 
+/**
+ * The BlueBalloon class represents a blue balloon in the game.
+ * It extends the Balloon class and provides functionality specific to blue
+ * balloons.
+ */
 public class BlueBalloon extends Balloon {
 
     public BlueBalloon() {
@@ -37,7 +42,19 @@ public class BlueBalloon extends Balloon {
         randTransitions();
     }
 
-    // FIX THIS, NEEDS TO RESET bALLOON WHEN PATH IS DONE CORRECTLY
+    /**
+     * Generates random transitions for the blue balloon.
+     * The duration of the transition, the X-coordinate of the balloon, and the path
+     * of the transition are randomly generated.
+     * The duration of the existing PathTransition is updated with a random value
+     * between 1 and 5 seconds.
+     * The X-coordinate of the balloon is set to a random value between 100 and
+     * (App.ScreenWidth - 150).
+     * The path of the existing PathTransition is updated with a vertical line from
+     * the random X-coordinate to a position above the screen.
+     * After the transition finishes, the method is recursively called to generate a
+     * new random transition.
+     */
     @Override
     protected void randTransitions() {
         Random random = new Random();
@@ -56,7 +73,7 @@ public class BlueBalloon extends Balloon {
             randTransitions();
             this.pT.playFromStart();
         });
-    }
+    } // randTransitions()
 
     /**
      * When called, the balloon will randomize the path transition and start from
@@ -85,5 +102,5 @@ public class BlueBalloon extends Balloon {
         } else {
             delete();
         }
-    }
-}
+    } // balloonPopped
+} // BlueBalloon.java

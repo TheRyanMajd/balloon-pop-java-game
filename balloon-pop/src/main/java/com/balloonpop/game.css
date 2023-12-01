@@ -27,6 +27,12 @@
     
 }
 
+.label-playStats {
+    -fx-font-family: "Comic Sans MS";
+    -fx-font-size: 32px;
+    -fx-flex: left;
+}
+
 .button-cartoony:hover {
     -fx-background-color: #FFA500; /* Darker gold color on hover */
     -fx-border-color: #FF4500; /* Darker orange border color on hover */
