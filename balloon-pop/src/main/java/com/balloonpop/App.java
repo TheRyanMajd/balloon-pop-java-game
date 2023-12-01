@@ -77,6 +77,8 @@ public class App extends Application {
 
         // Set up the primary stage
         primaryStage.setTitle("Balloon Pop Game");
+        Image icon = new Image(App.class.getResourceAsStream("/icon.png"));
+        primaryStage.getIcons().add(icon);
         primaryStage.setScene(menu);
         String css = this.getClass().getResource("game.css").toExternalForm();
         menu.getStylesheets().add(css);
