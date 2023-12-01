@@ -83,11 +83,6 @@ public class App extends Application {
         InputStream inputStream = App.class.getResourceAsStream("/funBtn.jpg");
         Image funBtnImg = new Image(inputStream);
         ImageView funBtn = new ImageView(funBtnImg);
-
-        // Image funBtnImg = new Image(
-        // "file:/Users/ryanmajd/Projects/balloon pop java
-        // game/balloon-pop/src/main/resources/funBtn.jpg");
-        // ImageView funBtn = new ImageView(funBtnImg);
         gameScore = new Label("Score\n" + 0); // Score starts at 0
         gameScore.setFont(new Font("Comic Sans MS", 24));
         // Set up buttons with images
