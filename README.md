@@ -4,7 +4,7 @@
 
 ### Version .03 Alpha
 
-This JavaFX project is a simple Balloon Pop game where players can pop balloons that appear on the screen. It includes various features like a main menu, playground mode, thirty second tiemd mode, background music, and more!
+This JavaFX project is a simple Balloon Pop game where players can pop balloons that appear on the screen. It includes various features like a main menu, playground mode, thirty-second timed mode, background music, and more!
 
 ## Table of Contents
 
@@ -19,7 +19,7 @@ This JavaFX project is a simple Balloon Pop game where players can pop balloons 
 
 ## Getting Started
 
-UI Navigation is inclusive, using mostly symbols. You can always press "ESC" to go back to the menu or quit the applicaiton.
+UI Navigation is inclusive, using mostly symbols. You can always press "ESC" to return to the menu or quit the application.
 
 ### Prerequisites
 
@@ -48,14 +48,14 @@ UI Navigation is inclusive, using mostly symbols. You can always press "ESC" to 
 ## Usage
 
 - Upon starting the game, the main menu is displayed.
-- Players can choose between regular play and playground mode. (Regular play is currently disabled as it has not been enabled)
+- Players can choose between regular play and playground mode.
 - In play mode, balloons appear on the screen, and players can pop them to score points. (Now includes timed versions e.g. 30s)
 - In playground mode, players can interact with the balloons without game constraints.
 - The game includes additional settings accessible through the settings button.
 
 ## Screenshots
 
-Will include screenshots of gameplay in future versions.
+I will include screenshots of gameplay in future versions.
 
 ## License
 
