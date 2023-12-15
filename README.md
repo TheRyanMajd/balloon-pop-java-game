@@ -56,7 +56,7 @@ UI Navigation is inclusive, using mostly symbols. You can always press "ESC" to 
 
 ## UML Diagram
 
-![UML Diagram of the project's Classes and Objects relevant for interpretation](./resources/umlDiagram.drawio.svg)
+![UML Diagram of the project's Classes and Objects relevant for interpretation](./balloon-pop/src/main/resources/umlDiagram.drawio.svg)
 
 ## Screenshots
 
