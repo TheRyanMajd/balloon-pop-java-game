@@ -13,6 +13,7 @@ This JavaFX project is a simple Balloon Pop game where players can pop balloons 
   - [Installation](#installation)
 - [Features](#features)
 - [Usage](#usage)
+- [UML Diagram](#uml-diagram)
 - [Screenshots](#screenshots)
 - [Contributing](#contributing)
 - [License](#license)
@@ -52,6 +53,10 @@ UI Navigation is inclusive, using mostly symbols. You can always press "ESC" to 
 - In play mode, balloons appear on the screen, and players can pop them to score points. (Now includes timed versions e.g. 30s)
 - In playground mode, players can interact with the balloons without game constraints.
 - The game includes additional settings accessible through the settings button.
+
+## UML Diagram
+
+![UML Diagram of the project's Classes and Objects relevant for interpretation](./resources/umlDiagram.drawio.svg)
 
 ## Screenshots
 
