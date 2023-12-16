@@ -6,6 +6,8 @@
 
 This JavaFX project is a simple Balloon Pop game where players can pop balloons that appear on the screen. It includes various features like a main menu, playground mode, thirty-second timed mode, background music, and more!
 
+[![Thumbnail of YT Video](https://img.youtube.com/vi/i2_uSYEO2QQ/1.jpg)](https://www.youtube.com/watch?v=i2_uSYEO2QQ)
+
 ## Table of Contents
 
 - [Getting Started](#getting-started)
